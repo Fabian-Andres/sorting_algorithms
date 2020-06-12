@@ -1,27 +1,42 @@
 #include "sort.h"
+/**
+ * insertion_sort_list - Function to sort doubly linked list
+ *
+ */
 
 void insertion_sort_list(listint_t **list)
 {
-    listint_t *b = NULL, *a = NULL;
-    // , *temp_aux = NULL
+	listint_t *node_c = NULL, *node_p = NULL, *node_aux = NULL;
 
-    b = *list;
-    while (b != NULL)
-    {
-        a = b->prev;
-        while (a != NULL && a->n > b->n)
-        {
-            // temp_aux = b->next;
-            // b->next = a;
-            // b->prev = a->prev;
-            // a->next = temp_aux;
-            // a->prev = b;
-            printf("prev %d next %d\n", a->n, b->n);
+	node_c = *list;
+	while (node_c != NULL)
+	{
+		node_p = node_c;
+		while (node_p->prev != NULL)
+		{
+			if (node_p->prev->n > node_p->n)
+			{
+				if (node_p->prev->prev != NULL)
+					node_p->prev->prev->next = node_p;
+				else
+					*list = node_p;
 
-            a = a->prev;
-        }
-        print_list(*list);
+				if (node_p->next != NULL)
+					node_p->next->prev = node_p->prev;
 
-        b = b->next;
-    }
+				node_aux = node_p->prev->prev;
+
+				node_p->prev->next = node_p->next;
+				node_p->prev->prev = node_p;
+
+				node_p->next = node_p->prev;
+				node_p->prev = node_aux;
+
+				print_list(*list);
+			}
+			else
+				break;
+		}
+		node_c = node_c->next;
+	}
 }
