@@ -1,0 +1,37 @@
+#include "sort.h"
+
+/**
+ * bubble_sort - Sort in ascending order
+ * @array: array of int
+ * @size: array size
+ *
+ * return: void
+*/
+
+void selection_sort(int *array, size_t size)
+{
+	int temp = 0;
+	size_t i, j, cambia;
+
+	for (j = 0; j < size; j++)
+	{
+		cambia = j;
+		i = j + 1;
+		//printf("%lu\n", i);
+		while (i < size)
+		{
+			if (array[i] < array[cambia])
+				cambia = i;
+			i++;
+		}
+		//printf("%lu == %lu\n", cambia, j);
+		if (cambia != j)
+		{
+			//printf("%lu != %lu\n", cambia, j);
+			temp = array[cambia];
+			array[cambia] = array[j];
+			array[j] = temp;
+			print_array(array, size);
+		}
+	}
+}
