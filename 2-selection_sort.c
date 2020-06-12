@@ -17,17 +17,14 @@ void selection_sort(int *array, size_t size)
 	{
 		cambia = j;
 		i = j + 1;
-		//printf("%lu\n", i);
 		while (i < size)
 		{
 			if (array[i] < array[cambia])
 				cambia = i;
 			i++;
 		}
-		//printf("%lu == %lu\n", cambia, j);
 		if (cambia != j)
 		{
-			//printf("%lu != %lu\n", cambia, j);
 			temp = array[cambia];
 			array[cambia] = array[j];
 			array[j] = temp;
