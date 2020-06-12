@@ -1,7 +1,9 @@
 #include "sort.h"
 /**
  * insertion_sort_list - Function to sort doubly linked list
+ * @list: list node
  *
+ * return: void
  */
 
 void insertion_sort_list(listint_t **list)
