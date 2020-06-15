@@ -1,7 +1,7 @@
 #include "sort.h"
 
 /**
- * bubble_sort - Sort in ascending order
+ * selection_sort - Sort in ascending order
  * @array: array of int
  * @size: array size
  *
@@ -11,7 +11,10 @@
 void selection_sort(int *array, size_t size)
 {
 	int temp = 0;
-	size_t i, j, cambia;
+	size_t i = 0, j = 0, cambia = 0;
+
+	if (size < 2)
+		return;
 
 	for (j = 0; j < size; j++)
 	{
