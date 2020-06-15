@@ -9,6 +9,7 @@
 void insertion_sort_list(listint_t **list)
 {
 	listint_t *node_c = NULL, *node_p = NULL, *node_aux = NULL;
+	int count = 0;
 
 	if ((*list)->next == NULL || list == NULL || (*list) == NULL)
 		return;
@@ -37,10 +38,13 @@ void insertion_sort_list(listint_t **list)
 				node_p->prev = node_aux;
 
 				print_list(*list);
+				count += 1;
 			}
 			else
 				break;
 		}
 		node_c = node_c->next;
 	}
+	if (count == 0)
+		print_list(*list);
 }
